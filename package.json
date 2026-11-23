@@ -1,0 +1,27 @@
+{
+  "name": "siobhan-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <27"
+  },
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "test:e2e": "npm run build && playwright test",
+    "validate": "npm run test:e2e"
+  },
+  "dependencies": {
+    "astro": "^7.1.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.13.3",
+    "typescript": "^5.9.0"
+  }
+}

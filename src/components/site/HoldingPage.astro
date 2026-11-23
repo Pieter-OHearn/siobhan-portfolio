@@ -1,0 +1,144 @@
+---
+import { withBase } from "../../utils/paths";
+import "@styles/global.css";
+
+const site = {
+  name: "Siobhan Herne",
+  mark: "S.J.H",
+  title: "Senior Product Designer",
+  location: "Amsterdam, The Netherlands",
+  linkedin: "https://www.linkedin.com/in/siobhanherne/"
+};
+const title = `${site.name} — Portfolio`;
+const description = `${site.name}, ${site.title}. The portfolio is being updated.`;
+const home = new URL(withBase("/"), Astro.site ?? Astro.url.origin);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content="noindex, nofollow, noarchive, nosnippet, noimageindex"
+    />
+    <meta name="theme-color" content="#f7f7f7" />
+    <meta name="color-scheme" content="light" />
+    <link rel="canonical" href={home} />
+    <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={home} />
+    <meta property="og:site_name" content={site.name} />
+    <meta name="twitter:card" content="summary" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="holding">
+      <header class="holding-top">
+        <p>{site.title}</p>
+        <p>{site.location}</p>
+      </header>
+
+      <main id="main-content" class="holding-main">
+        <h1 class="holding-title">
+          {site.name}
+          <span class="holding-status">Portfolio, back soon.</span>
+        </h1>
+
+        <p class="holding-links">
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn<span aria-hidden="true">&nbsp;↗</span>
+            <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </p>
+      </main>
+
+      <footer class="holding-footer">
+        <p class="holding-mark" aria-hidden="true">{site.mark}</p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  .holding {
+    --holding-inset: clamp(20px, 4.0816vw, 60px);
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: min(100%, var(--page-max-home));
+    min-height: 100vh;
+    min-height: 100svh;
+    margin-inline: auto;
+    overflow: clip;
+  }
+
+  .holding-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding: 24px var(--holding-inset) 0;
+    color: var(--color-text-secondary);
+    font-size: var(--type-meta-size);
+    line-height: var(--type-meta-leading);
+    letter-spacing: var(--type-meta-tracking);
+  }
+
+  .holding-main {
+    align-self: end;
+    padding: 96px var(--holding-inset) clamp(40px, 6vw, 80px);
+  }
+
+  .holding-title {
+    font-size: clamp(52px, 9.2vw, 136px);
+    font-weight: var(--font-weight-roman);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+  }
+
+  .holding-status {
+    display: block;
+    color: var(--color-text-muted);
+  }
+
+  .holding-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    margin-top: clamp(32px, 4vw, 56px);
+    font-size: var(--type-nav-size);
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+  }
+
+  .holding-links a {
+    display: inline-block;
+    padding-block: 6px;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color var(--duration-standard) var(--easing-standard);
+  }
+
+  .holding-links a:hover {
+    color: var(--color-text-link-hover);
+  }
+
+  .holding-footer {
+    padding: 0 var(--holding-inset) 20px;
+  }
+
+  .holding-mark {
+    color: var(--color-ink-footer);
+    font-size: min(40.4082vw, var(--type-footer-size));
+    font-weight: var(--font-weight-bold);
+    line-height: var(--type-footer-leading);
+    letter-spacing: max(-1.45vw, var(--type-footer-tracking));
+    white-space: nowrap;
+  }
+</style>
